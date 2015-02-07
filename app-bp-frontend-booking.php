@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: BuddyPress + Appointments Booking Integration
- * Version: 1.4.6
- * Author: WPMU DEV
+ * Version: 1.0.0
+ * Author: Jude Rosario (WPMU DEV)
  * Author URI: http://premium.wpmudev.org/
  */
 
