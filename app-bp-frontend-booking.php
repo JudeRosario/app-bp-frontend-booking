@@ -156,4 +156,14 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 
 endif;
 
+// Check if the base plugin is installed before activating the addon 
+add_action('plugins_loaded', 'init_bp_feb') ;
+
+	function init_bp_feb () {
+		if (class_exists('Appointments'))
+		{	
+			global $appointments ; 
+			new BuddyPress_Front_End_Booking($appointments) ; 
+		}
+	}
 ?>
