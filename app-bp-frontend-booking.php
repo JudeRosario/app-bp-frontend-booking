@@ -3,6 +3,7 @@
  * Plugin Name: BuddyPress + Appointments Booking Integration
  * Version: 1.0.0
  * Author: Jude Rosario (WPMU DEV)
+ * Description: Lets users book appointments from the BuddyPress Profile Page of a Service Provider. Others see the My Appointments table
  * Author URI: http://premium.wpmudev.org/
  */
 
