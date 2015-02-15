@@ -39,12 +39,10 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 
 		function inject_nav() {
 			global $bp;
-				bp_core_new_subnav_item(array(
+				bp_core_new_nav_item(array(
 					'name' => $this->appointments->options['tab_title'] ? 
 									$this->appointments->options["tab_title"] : "Book an Appointment",
 					'slug' => 'book-appointment',
-					'parent_url' => trailingslashit( bp_displayed_user_domain() . 'profile' ),
-					'parent_slug' => 'profile',
 					'screen_function' => array( $this,  'add_bookings_tab'),
 					'position' => 50
 					));
@@ -52,7 +50,7 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 
 		function add_bookings_tab() {
 			add_action( 'bp_template_content', array( $this,  'inject_booking_html' ) );
-		    bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'members/single/plugins' ) );
+		        bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'members/single/plugins' ) );
 		}
 
 
@@ -62,49 +60,68 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 			$user = get_current_user_id() ;
 ?>
 				<h3><?php echo $this->appointments->options["tab_title"];  ?></h3>
+<?
+			if( $this->appointments->is_worker($worker) ) : 
+				if ( $worker != $user ):
+?>
+				<table>
+					<tbody>
+					<tr>
+						<td> <?php echo do_shortcode('[app_my_appointments allow_cancel="1" ]');?>  </td>				
+					</tr>
+					<tr>
+						<td> <?php echo do_shortcode('[app_services worker= "'.$worker.'"]');?>  </td>
+					</tr>
+					<tr>
+						<td colspan="2"><?php echo do_shortcode('[app_monthly_schedule worker= "'.$worker.'"]');?></td>
+					</tr>
+					<tr>
+						<td colspan="2"><?php echo do_shortcode('[app_pagination month="1"]');?></td>
+					</tr>
+					<tr>
+						<td colspan="2"><?php echo do_shortcode('[app_login]');?></td>
+					</tr>
+					<tr>
+						<td colspan="2"><?php echo do_shortcode('[app_confirmation]');?></td>
+					</tr>
+					<tr>
+						<td colspan="2"><?php echo do_shortcode('[app_paypal]');?></td>
+					</tr>
+					</tbody>
+				</table>
+<?
+				endif;
+
+				if ( $worker == $user ):
+?>
+					<table>
+						<tr>	
+							<td> <?php echo do_shortcode('[app_my_appointments provider="1" _allow_confirm = "1"]');?>  </td>
+						</tr>
+					</table>
+<?
+				endif;
+			endif; 
+
+
+			if( ! $this->appointments->is_worker($worker) ) : 
+				if ( $worker == $user ):
+?>
 					<table>
 						<tbody>
-						<tr>
-							<td> <?php echo do_shortcode('[app_my_appointments]');?>  </td>
-						</tr>
+							<tr>
+								<td> <?php echo do_shortcode('[app_my_appointments allow_cancel="1" ]');?>  </td>				
+							</tr>			
 						</tbody>
 					</table>	
 <?
-			if( $this->appointments->is_worker($worker) ) : 
-?>
-					<table>
-						<tbody>
-						<tr>
-							<td> <?php echo do_shortcode('[app_my_appointments]');?>  </td>
-						</tr>
-<?
-						if ($worker != $user ): 
-?>
-							<tr>
-								<td> <?php echo do_shortcode('[app_services worker= "'.$worker.'"]');?>  </td>
-							</tr>
-							<tr>
-								<td colspan="2"><?php echo do_shortcode('[app_monthly_schedule worker= "'.$worker.'"]');?></td>
-							</tr>
-							<tr>
-								<td colspan="2"><?php echo do_shortcode('[app_pagination month="1"]');?></td>
-							</tr>
-							<tr>
-								<td colspan="2"><?php echo do_shortcode('[app_login]');?></td>
-							</tr>
-							<tr>
-								<td colspan="2"><?php echo do_shortcode('[app_confirmation]');?></td>
-							</tr>
-							<tr>
-								<td colspan="2"><?php echo do_shortcode('[app_paypal]');?></td>
-							</tr>
-<?
-						endif;
-?>
-						</tbody>
-					</table>
-<?
-			endif ; 
+				endif;
+
+				if ( $worker != $user ):
+					echo "Sorry this user does not provide any services on our site" ;
+				endif;
+
+			endif; 
 
 		}
 	// Injects settings into the admin end
