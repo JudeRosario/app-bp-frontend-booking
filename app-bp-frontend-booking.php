@@ -67,7 +67,7 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 				<table>
 					<tbody>
 					<tr>
-						<td> <?php echo do_shortcode('[app_my_appointments allow_cancel="1" ]');?>  </td>				
+						<td> <?php echo do_shortcode('[app_my_appointments allow_cancel="1" status="paid, confirmed, pending, completed, removed, reserved" ]');?>  </td>				
 					</tr>
 					<tr>
 						<td> <?php echo do_shortcode('[app_services worker= "'.$worker.'"]');?>  </td>
