@@ -61,7 +61,7 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 ?>
 		<h3><?php echo $this->appointments->options["tab_title"];  ?></h3>
 <?
-		if( $this->appointments->is_worker($worker) ) : 
+		if( appointments_is_worker($worker) ) : 
 			if ( $worker != $user ):
 ?>
 			<table>
@@ -104,7 +104,7 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 		endif; 
 
 
-		if( ! $this->appointments->is_worker($worker) ) : 
+		if( ! appointments_is_worker($worker) ) : 
 			if ( $worker == $user ):
 ?>
 				<table>
