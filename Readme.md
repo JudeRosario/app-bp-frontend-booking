@@ -1,6 +1,6 @@
 ## Addon for the Appointments+ Plugin (WPMUDEV)
 
-![Screenshot](https://img.shields.io/badge/build-passed-1ece30.svg) ![Screenshot](https://img.shields.io/badge/plugin-WPMUDEV-blue.svg) ![Screenshot](https://img.shields.io/badge/license-GNU_GPL_v2-red.svg) ![Screenshot](https://img.shields.io/badge/release-1.0.0-orange.svg)
+![Screenshot](https://img.shields.io/badge/build-passed-1ece30.svg) ![Screenshot](https://img.shields.io/badge/plugin-WPMUDEV-blue.svg) ![Screenshot](https://img.shields.io/badge/license-GNU_GPL_v2-red.svg) ![Screenshot](https://img.shields.io/badge/release-1.0.3-orange.svg)
 
 __This is a Add on to the [Appointments+](https://premium.wpmudev.org/project/appointments-plus/) plugin, you can either choose to show the Appointments booking workflow as part of the Profile page itself or create a new sub tab under the main profile tab and display it there separately. You can set the title of this pane from the admin screen.__
 
