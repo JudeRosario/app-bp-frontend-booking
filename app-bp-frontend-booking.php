@@ -50,7 +50,7 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 
 	function add_bookings_tab() {
 		add_action( 'bp_template_content', array( $this,  'inject_booking_html' ) );
-	        bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'members/single/plugins' ) );
+    	bp_core_load_template( 'template_content' );
 	}
 
 
