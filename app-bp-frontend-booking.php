@@ -43,6 +43,7 @@ if(!class_exists('BuddyPress_Front_End_Booking')):
 				'name' => $this->appointments->options['tab_title'] ? 
 						$this->appointments->options["tab_title"] : "Book an Appointment",
 				'slug' => 'book-appointment',
+				'default_subnav_slug' => 'book-appointment',
 				'screen_function' => array( $this,  'add_bookings_tab'),
 				'position' => 50
 				));
